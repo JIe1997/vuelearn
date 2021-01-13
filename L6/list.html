@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ol,ul{
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    .menu {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+    }
+    .menu div{
+      width: 50px;
+      text-align: center;
+    }
+    .menu li{
+      padding: 8px 10px;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+    .menu li.active{
+      background:orangered;
+      color:#fff;
+    }
+    [v-cloak]{display: none;}
+
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <h4 style="margin:40px auto;max-width:1000px;">共有{{resultList.length}}条数据</h4>
+    <div style="margin:40px auto 40px;max-width:1000px;border:1px solid red;">
+      <tab-menu :list="cityList" type-text="城市" @change="cityChange"></tab-menu>
+      <tab-menu :list="typeList" type-text="类型" @change="typeChange"></tab-menu>
+    </div>
+    <ol style="margin:0 auto;max-width:1000px;">
+      <li v-for="item in resultList">
+        <a :href="'detail.html?id='+ item.id" style="display: flex;">
+          <figure style="width:200px">
+            <img style="width:100%" :src="item.verticalPic" alt="">
+          </figure>
+          <div style="padding: 20px;">
+            <p>【{{item.venuecity}}】{{item.name}}</p>
+            <p style="margin-top: 20px">{{item.description}}</p>
+          </div>
+        </a>
+      </li>
+    </ol>
+  </div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.0/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    Vue.component('tabMenu', {
+      template: `<ul class="menu">
+        <div>{{typeText}}</div>
+        <li :class="{active: i===currentActive}" v-for="(item,i) in list" @click="clickTab(i)">{{item.name}}</li>
+      </ul>`,
+      props: {
+        list: {
+          type: Array,
+          required: true,
+          default: [],
+        },
+        typeText: {
+          type: String,
+          default: '类型'
+        }
+      },
+      data() {
+        return {
+          currentActive: 0,
+        }
+      },
+      methods: {
+        clickTab(i) {
+          this.currentActive = i
+          this.$emit('change', i)
+        }
+      },
+    })
+
+    let vm = new Vue({
+      el: "#app",
+      created() {
+        this.getData()
+      },
+      data() {
+        return {
+          currentCityActive: 0,
+          currentTypeActive: 0,
+          resultList: [],
+          cityList: [
+            {
+              id: 0,
+              name: "全部"
+            },
+            {
+              id: 852,
+              name: '北京'
+            },
+            {
+              id: 872,
+              name: '上海'
+            },
+            {
+              id: 893,
+              name: '广州'
+            },
+            {
+              id: 1209,
+              name: '深圳'
+            }
+          ],
+          typeList: [
+            {
+              id: 0,
+              name: "全部"
+            },
+            {
+              id: 19,
+              name: '话剧'
+            },
+            {
+              id: 3,
+              name: '话剧歌剧'
+            },
+            {
+              id: 1,
+              name: '演唱会'
+            }
+          ],
+        }
+      },
+      methods: {
+        cityChange(i){
+          this.currentCityActive = i
+          this.getData()
+        },
+        typeChange(i) {
+          this.currentTypeActive = i
+          this.getData()
+        },
+        getData() {
+          axios.get('data.json').then(res=>{
+            const cityid = this.cityList[this.currentCityActive].id
+            const typeid = this.typeList[this.currentTypeActive].id
+            let data = res.data.resultData
+            if(cityid) {
+              data = data.filter(item => item.cityid === cityid)
+            }
+            if(typeid) {
+              data = data.filter(item => item.categoryid === typeid)
+            }
+            this.resultList = data
+          })
+        }
+      },
+    })
+  </script>
+</body>
+</html>

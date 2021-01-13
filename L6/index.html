@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    [v-cloak]{
+      display: none;
+    }
+
+    .red{
+      color: red;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <redh1 size="60px">slot里面放东西</redh1>
+    <redh1>2</redh1>
+    <redh1>3</redh1>
+    <aaa>123</aaa>
+  </div>
+  <template id="aaa"><div><slot></slot></div></template>
+  <script src='https://cdn.bootcss.com/vue/2.6.12/vue.js'></script>
+  <script>
+    let vm = new Vue({
+      el: "#app",
+      components: {
+        // 组件名称：组件对象
+        redh1: {
+          template: `<h1 class="red" :style="{fontSize: size}">
+            <slot></slot>
+          </h1>`,
+          // 接受参数
+          props: {
+            size: {
+              type: String,
+              // required: true, // 是否必填
+              default: '20px'
+            }
+          }
+        },
+        aaa: {
+          template: "#aaa"
+        }
+      }
+    })
+  </script>
+</body>
+</html>

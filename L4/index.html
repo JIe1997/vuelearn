@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .container{
+      width: 1200px;
+      margin: 0 auto;
+    }
+    .list{
+      display: flex;
+      align-items: center;
+      width: 1200px;
+      margin: 0 auto;
+      border: 1px solid #dedede;
+    }
+    .list li{
+      flex: 1;
+      padding: 12px 10px;
+      text-align: center;
+    }
+    .count{
+      display: inline-flex;
+      border: 1px solid #ccc;
+    }
+    .count button[disabled]{
+      cursor: not-allowed;
+    }
+    .count button{
+      width: 40px;
+      font-size: 18px;
+      border: 0;
+      outline: none;
+      cursor: pointer;
+    }
+    .count input{
+      outline: none;
+      border: 0;
+      width: 60px;
+      height: 50px;
+      text-align: center;
+    }
+    .bt0{
+      border-top: 0;
+    }
+    [v-cloak]{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <h2 class="container">购物车</h2>
+    <ol class="list">
+      <li><input type="checkbox" id="checkAll" v-model="isCheckAll" @change="checkAll"><label for="checkAll">全选</label></li>
+      <li>名称</li>
+      <li>单价</li>
+      <li>数量</li>
+      <li>金额</li>
+      <li>操作</li>
+    </ol>
+
+    <ol class="list bt0" v-for="(goods,i) in goodsList">
+      <li><input type="checkbox" :id="'c'+i" v-model="goods.isCheck" @change="check"><label :for="'c'+i">选中</label></li>
+      <li>
+        {{goods.name}}
+        <br>
+        {{goods.description}}
+      </li>
+      <li>{{goods.price | toFixed(2) | RMBformat}}</li>
+      <li>
+        <div class="count">
+          <button @click="goods.count--" :disabled="goods.count===countLimit.MIN">-</button>
+          <input type="text" :value="goods.count" @blur="changeCount($event,goods)" @keydown.enter="changeCount($event,goods)">
+          <button @click="goods.count++" :disabled="goods.count===countLimit.MAX">+</button>
+        </div>
+      </li>
+      <li>{{calc(goods) | toFixed(2) | RMBformat}}</li>
+      <li><button @click="del(i)">&times;</button></li>
+    </ol>
+    <div class="container">
+      总价：{{priceAll}}
+    </div>
+  </div>
+  <script src='https://cdn.bootcss.com/vue/2.6.10/vue.js'></script>
+  <script>
+    var vm = new Vue({
+      el: "#app",
+      filters: {
+        RMBformat: function(val) {
+          return "¥" + val
+        },
+        toFixed: function (val,param){
+          return Number(val).toFixed(param)
+        }
+      },
+      data() {
+        return {
+          countLimit: {
+            MIN: 1,
+            MAX: 99
+          },
+          isCheckAll: true,
+          goodsList: [
+            {
+              id: 0,
+              isCheck: true,
+              name: "Golden Chaplet 金枝",
+              description: "规格：份",
+              price: "298",
+              count: 1
+            },
+            {
+              id: 1,
+              isCheck: true,
+              name: "Hokkaido Toast 北海道吐司（4片）",
+              description: "规格：150g(一份)",
+              price: "13.8",
+              count: 1
+            },
+            {
+              id: 2,
+              isCheck: true,
+              name: "Caramel Almond Crisps 焦糖杏仁酥塔饼干",
+              description: "规格：95g(一盒)",
+              price: "28",
+              count: 1
+            }
+          ]
+        }
+      },
+      computed: {
+        priceAll() {
+          let arr = this.goodsList.filter(r => !!r.isCheck).map(r => Number(r.price)*r.count)
+          return arr.length ? arr.reduce((a,b) => a + b) : 0
+        }
+      },
+      methods: {
+        calc(goods) {
+          return goods.count * Number(goods.price)
+        },
+        changeCount(e, goods) {
+          let val = e.target.value
+          if(isNaN(val)) val = 1
+          if(Number.isInteger(val)) val = Math.floor(val)
+          if(val < this.countLimit.MIN || val > this.countLimit.MAX) val = this.countLimit.MIN
+          goods.count = val
+          // 设置dom input的value
+          e.target.value = val
+        },
+        del(i){
+          if(window.confirm('确定要删除？'))
+            this.goodsList.splice(i, 1)
+        },
+        checkAll() {
+          this.goodsList.forEach(r => r.isCheck = this.isCheckAll) 
+        },
+        check() {
+          this.isCheckAll = this.goodsList.every(r => !!r.isCheck)
+        }
+      },
+    })
+  </script>
+</body>
+</html>

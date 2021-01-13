@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    [v-cloak]{
+      display: none;
+    }
+    *{
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .app{
+      width: 1000px;
+      margin: 40px auto;
+    }
+    .count{
+      margin-top: 30px;
+      display: inline-flex;
+      border: 1px solid #ccc;
+    }
+    .count button[disabled]{
+      cursor: not-allowed;
+    }
+    .count button{
+      width: 40px;
+      font-size: 18px;
+      border: 0;
+      outline: none;
+      cursor: pointer;
+    }
+    .count input{
+      outline: none;
+      border: 0;
+      width: 60px;
+      height: 50px;
+      text-align: center;
+    }
+    a{
+      color: #333;
+      text-decoration: none;
+    }
+    .price div{
+      margin-top: 10px;
+      padding:10px 20px;
+    }
+    .price{
+      display: flex;
+    }
+    .price li{
+      cursor: pointer;
+      margin: 10px;
+      padding:10px;
+      background-color: #eee;
+    }
+    .price li.active{
+      background-color:orangered;
+      color:#fff;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="app" v-cloak>
+    
+    <div style="display: flex;">
+      <figure style="width:300px"><img style="width:100%" :src="showObj.verticalPic" alt=""></figure>
+      
+      <div style="flex:1;margin-left:30px;">
+        <h3>{{showObj.name}}</h3>
+        <h4 style="margin: 20px 0 30px;">{{showObj.venue}} - {{showObj.showstatus}}</h4>
+        <div class="price">
+          <div>价格</div>
+          <ul style="display: flex;">
+            <li :class="{active: i === currnetPriceActive }" v-for="(item,i) in priceList" @click="currnetPriceActive=i">{{item}}</li>
+          </ul>
+        </div>
+      
+        <div class="count">
+          <button @click="count--" :disabled="count===1">-</button>
+          <input type="text" v-model="count">
+          <button @click="count++" :disabled="count===3">+</button>
+        </div>
+        <div v-show="count===3" style="display: inline-block;font-size: 14px;color:#999;">最多买3张票哦~</div>
+      
+        <div style="margin-top:30px;">总价：￥{{totalPrice | toFixed(2)}} / ${{totalPriceUS | toFixed(2)}}</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.0/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    function getQueryParams() {
+      var obj = {}
+      if(!location.search) return obj
+      var queryArr = location.search.replace('?','').split('&')
+      queryArr.forEach(function(r) {
+        var arr = r.split('=')
+        obj[arr[0]] = arr[1]
+      })
+      return obj
+    }
+
+    Vue.filter('toFixed', function(val, param){
+      return val.toFixed(param)
+    })
+
+    let vm = new Vue({
+      el: "#app",
+      data() {
+        return {
+          count: 1,
+          currnetPriceActive: 0,
+          priceList: [280, 560, 1080, 1140, 1280],
+          showObj: {}
+        }
+      },
+      created() {
+        this.showData()
+      },
+      computed: {
+        totalPrice() {
+          return this.priceList[this.currnetPriceActive] * this.count
+        },
+        totalPriceUS() {
+          return this.totalPrice / 6.9
+        }
+      },
+      watch: {
+        count() {
+          if(isNaN(this.count)) this.count = 1
+          if(!Number.isInteger(this.count)) this.count = Math.floor(this.count)
+          if(this.count<1) this.count = 1
+          if(this.count>3) this.count = 3
+        },
+      },
+      methods: {
+        async showData() {
+          let res = await axios.get('data.json')
+          let id = getQueryParams().id
+          let data = res.data.resultData.find(r => r.id+'' === id+'')
+          this.showObj = data
+        }
+      },
+    })
+  </script>
+</body>
+</html>

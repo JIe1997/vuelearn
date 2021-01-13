@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_2291973_zg5eu9vd4g.css">
+</head>
+<body>
+  <style>
+    .star{cursor: pointer;}
+  </style>
+  <div id="app">
+    <star :count="5" :score="3" current-color="red" size="2rem"></star>
+  </div>
+
+  <script src='https://cdn.bootcss.com/vue/2.6.10/vue.js'></script>
+  <script>
+    Vue.component('star', {
+      template: `
+      <div>
+        <i class="star iconfont icon-xingxing" 
+          :style="{color: c(item), fontSize: size}" 
+          v-for="item in count"
+          @mouseenter="myScore = item"
+          @mouseleave="myScore = myTempScore"
+          @click="myTempScore = item"
+        ></i>
+      </div>
+      `,
+      props: {
+        // 得分
+        score: {
+          type: Number,
+          default: 0
+        },
+        // 总数
+        count: {
+          type: Number,
+          default: 5
+        },
+        // 未选中颜色
+        color: {
+          type: String,
+          default: '#efefef'
+        },
+        // 选中颜色
+        currentColor: {
+          type: String,
+          default: 'red'
+        },
+        size: {
+          type: String,
+          default: '16px'
+        }
+      },
+      methods: {
+        c(item){
+          return item <= this.myScore ? this.currentColor : this.color
+        }
+      },
+      data() {
+        return {
+          myScore: this.score, // 当前得分
+          myTempScore: this.score, // 缓存
+        }
+      }
+    })
+
+    let vm = new Vue({
+      el: "#app",
+      data() {
+        return {}
+      },
+    })
+  </script>
+</body>
+</html>

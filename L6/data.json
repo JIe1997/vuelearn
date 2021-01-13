@@ -1,0 +1,497 @@
+{"resultData": [
+  {
+    "activityTags": [
+      
+    ],
+    "actors": "",
+    "business": 0,
+    "categoryid": 3,
+    "categoryname": "话剧歌剧",
+    "cityid": 893,
+    "cityname": "广州",
+    "couponTags": [
+      
+    ],
+    "description": "",
+    "id": "1_1_635169195988",
+    "imgurl": "2056724663",
+    "isAtmospheric": false,
+    "iseticket": 0,
+    "isgeneralagent": 0,
+    "issuperticket": 0,
+    "isxuanzuo": 1,
+    "name": "音乐剧《在远方》",
+    "nameNoHtml": "音乐剧《在远方》",
+    "price": 99.0,
+    "price_str": "99-1080",
+    "pricehigh": 1080.0,
+    "privilegeTags": [
+      
+    ],
+    "projectid": 635169195988,
+    "promotionTags": [
+      
+    ],
+    "showstatus": "售票中",
+    "showtag": "",
+    "showtime": "2021.02.25-02.28",
+    "sitestatus": 3,
+    "subcategoryid": 22,
+    "subcategoryname": "音乐剧",
+    "subhead": "",
+    "venue": "广州大剧院歌剧厅",
+    "venuecity": "广州",
+    "venueid": 1321,
+    "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i2/2251059038/O1CN0194M87G2GdSHwWbFYC_!!2251059038.jpg"
+  },
+  {
+    "activityTags": [
+      
+    ],
+    "actors": "",
+    "business": 0,
+    "categoryid": 3,
+    "categoryname": "话剧歌剧",
+    "cityid": 852,
+    "cityname": "北京",
+    "couponTags": [
+      
+    ],
+    "description": "",
+    "id": "1_1_633964974287",
+    "imgurl": "2044682446",
+    "isAtmospheric": false,
+    "iseticket": 0,
+    "isgeneralagent": 0,
+    "issuperticket": 0,
+    "isxuanzuo": 1,
+    "name": "开心麻花2020奇幻爆笑贺岁舞台剧《动物视界》",
+    "nameNoHtml": "开心麻花2020奇幻爆笑贺岁舞台剧《动物视界》",
+    "price": 80.0,
+    "price_str": "80-1080",
+    "pricehigh": 1080.0,
+    "privilegeTags": [
+      
+    ],
+    "projectid": 633964974287,
+    "promotionTags": [
+      
+    ],
+    "showstatus": "售票中",
+    "showtag": "",
+    "showtime": "2021.01.07-01.31",
+    "sitestatus": 3,
+    "subcategoryid": 19,
+    "subcategoryname": "话剧",
+    "subhead": "",
+    "venue": "世纪剧院",
+    "venuecity": "北京",
+    "venueid": 107,
+    "verticalPic": "https://img.alicdn.com/bao/uploaded/i2/2251059038/O1CN01cPl3bC2GdSHnPJEaI_!!0-item_pic.jpg"
+  },
+  {
+    "activityTags": [
+      
+    ],
+    "actors": "",
+    "business": 0,
+    "categoryid": 3,
+    "categoryname": "话剧歌剧",
+    "cityid": 852,
+    "cityname": "北京",
+    "couponTags": [
+      
+    ],
+    "description": "",
+    "id": "1_1_633966394209",
+    "imgurl": "2044696646",
+    "isAtmospheric": false,
+    "iseticket": 0,
+    "isgeneralagent": 0,
+    "issuperticket": 0,
+    "isxuanzuo": 1,
+    "name": "开心麻花2019年底大戏《贼想得到你》",
+    "nameNoHtml": "开心麻花2019年底大戏《贼想得到你》",
+    "price": 80.0,
+    "price_str": "80-1080",
+    "pricehigh": 1080.0,
+    "privilegeTags": [
+      
+    ],
+    "projectid": 633966394209,
+    "promotionTags": [
+      
+    ],
+    "showstatus": "售票中",
+    "showtag": "",
+    "showtime": "2021.01.07-01.31",
+    "sitestatus": 3,
+    "subcategoryid": 19,
+    "subcategoryname": "话剧",
+    "subhead": "",
+    "venue": "海淀剧院",
+    "venuecity": "北京",
+    "venueid": 74,
+    "verticalPic": "https://img.alicdn.com/bao/uploaded/i3/2251059038/O1CN01Io05L82GdSHmRt65d_!!0-item_pic.jpg"
+  },
+  {
+    "activityTags": [
+      
+    ],
+    "actors": "",
+    "business": 0,
+    "categoryid": 1,
+    "categoryname": "演唱会",
+    "cityid": 852,
+    "cityname": "北京",
+    "couponTags": [
+      
+    ],
+    "description": "",
+    "id": "1_1_635248023455",
+    "imgurl": "2057512938",
+    "isAtmospheric": false,
+    "iseticket": 0,
+    "isgeneralagent": 1,
+    "issuperticket": 0,
+    "isxuanzuo": 1,
+    "name": "2021隔壁老樊“绽放”专场音乐会",
+    "nameNoHtml": "2021隔壁老樊“绽放”专场音乐会",
+    "price": 180.0,
+    "price_str": "180-880",
+    "pricehigh": 880.0,
+    "privilegeTags": [
+      
+    ],
+    "projectid": 635248023455,
+    "promotionTags": [
+      
+    ],
+    "showstatus": "售票中",
+    "showtag": "",
+    "showtime": "2021.01.23 周六 19:00",
+    "sitestatus": 3,
+    "subcategoryid": 13,
+    "subcategoryname": "其他",
+    "subhead": "",
+    "venue": "北京展览馆剧场",
+    "venuecity": "北京",
+    "venueid": 26,
+    "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i2/2251059038/O1CN011BFtT02GdSHxEnFgN_!!2251059038.jpg"
+  },
+  {
+    "activityTags": [
+      
+    ],
+    "actors": "",
+    "business": 0,
+    "categoryid": 3,
+    "categoryname": "话剧歌剧",
+    "cityid": 872,
+    "cityname": "上海",
+    "couponTags": [
+      
+    ],
+    "description": "",
+    "id": "1_1_634863356549",
+    "imgurl": "2053666269",
+    "isAtmospheric": false,
+    "iseticket": 0,
+    "isgeneralagent": 0,
+    "issuperticket": 0,
+    "isxuanzuo": 1,
+    "name": "【缪时客2021开年力作】外百老汇音乐剧《陪你倒数》中文版",
+    "nameNoHtml": "【缪时客2021开年力作】外百老汇音乐剧《陪你倒数》中文版",
+    "price": 180.0,
+    "price_str": "180-580",
+    "pricehigh": 580.0,
+    "privilegeTags": [
+      
+    ],
+    "projectid": 634863356549,
+    "promotionTags": [
+      
+    ],
+    "showstatus": "售票中",
+    "showtag": "",
+    "showtime": "2021.04.02-04.11",
+    "sitestatus": 3,
+    "subcategoryid": 22,
+    "subcategoryname": "音乐剧",
+    "subhead": "",
+    "venue": "上海共舞台",
+    "venuecity": "上海",
+    "venueid": 83,
+    "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i1/2251059038/O1CN01Fyb7Br2GdSI9XgBU2_!!2251059038.png"
+  },
+  {
+    "activityTags": [
+      
+    ],
+    "actors": "",
+    "business": 0,
+    "categoryid": 3,
+    "categoryname": "话剧歌剧",
+    "cityid": 872,
+    "cityname": "上海",
+    "couponTags": [
+      
+    ],
+    "description": "",
+    "id": "1_1_635145844012",
+    "imgurl": "2056491144",
+    "isAtmospheric": false,
+    "iseticket": 0,
+    "isgeneralagent": 0,
+    "issuperticket": 0,
+    "isxuanzuo": 1,
+    "name": "舞台剧《繁花》第一季",
+    "nameNoHtml": "舞台剧《繁花》第一季",
+    "price": 280.0,
+    "price_str": "280-880",
+    "pricehigh": 880.0,
+    "privilegeTags": [
+      
+    ],
+    "projectid": 635145844012,
+    "promotionTags": [
+      
+    ],
+    "showstatus": "售票中",
+    "showtag": "",
+    "showtime": "2021.03.10-03.14",
+    "sitestatus": 3,
+    "subcategoryid": 19,
+    "subcategoryname": "话剧",
+    "subhead": "",
+    "venue": "美琪大戏院",
+    "venuecity": "上海",
+    "venueid": 57,
+    "verticalPic": "https://img.alicdn.com/bao/uploaded/i1/2251059038/O1CN01SkjZIh2GdSIIPzABe_!!0-item_pic.jpg"
+  },
+  {
+    "activityTags": [
+      
+    ],
+    "actors": "艺人：吴克群",
+    "business": 0,
+    "categoryid": 1,
+    "categoryname": "演唱会",
+    "cityid": 3250,
+    "cityname": "西安",
+    "couponTags": [
+      
+    ],
+    "description": "艺人：吴克群",
+    "id": "1_1_635095166983",
+    "imgurl": "2055984373",
+    "isAtmospheric": false,
+    "iseticket": 0,
+    "isgeneralagent": 1,
+    "issuperticket": 0,
+    "isxuanzuo": 0,
+    "name": "吴克群2021 Livehouse巡回演唱会《今晚我想和你借点故事》西安站",
+    "nameNoHtml": "吴克群2021 Livehouse巡回演唱会《今晚我想和你借点故事》西安站",
+    "price": 360.0,
+    "price_str": "360",
+    "pricehigh": 360.0,
+    "privilegeTags": [
+      
+    ],
+    "projectid": 635095166983,
+    "promotionTags": [
+      
+    ],
+    "showstatus": "售票中",
+    "showtag": "",
+    "showtime": "2021.01.16 周六 20:00",
+    "sitestatus": 3,
+    "subcategoryid": 48,
+    "subcategoryname": "livehouse",
+    "subhead": "",
+    "venue": "星球工厂LIVEHOUSE",
+    "venuecity": "西安",
+    "venueid": 2761004,
+    "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i1/2251059038/O1CN01u5mDVi2GdSI2oAw1U_!!2251059038.png"
+  },
+  {
+    "activityTags": [
+      
+    ],
+    "actors": "",
+    "business": 0,
+    "categoryid": 3,
+    "categoryname": "话剧歌剧",
+    "cityid": 1209,
+    "cityname": "深圳",
+    "couponTags": [
+      
+    ],
+    "description": "",
+    "id": "1_1_634435808784",
+    "imgurl": "2049390791",
+    "isAtmospheric": false,
+    "iseticket": 0,
+    "isgeneralagent": 0,
+    "issuperticket": 0,
+    "isxuanzuo": 1,
+    "name": "开心麻花2020爆笑贺岁舞台剧《横财满屋》",
+    "nameNoHtml": "开心麻花2020爆笑贺岁舞台剧《横财满屋》",
+    "price": 80.0,
+    "price_str": "80-1080",
+    "pricehigh": 1080.0,
+    "privilegeTags": [
+      
+    ],
+    "projectid": 634435808784,
+    "promotionTags": [
+      
+    ],
+    "showstatus": "售票中",
+    "showtag": "",
+    "showtime": "2021.01.08-01.10",
+    "sitestatus": 3,
+    "subcategoryid": 19,
+    "subcategoryname": "话剧",
+    "subhead": "",
+    "venue": "天津中华剧院",
+    "venuecity": "天津",
+    "venueid": 468,
+    "verticalPic": "https://img.alicdn.com/bao/uploaded/i2/2251059038/O1CN01doNggM2GdSI5XSOam_!!0-item_pic.jpg"
+  },
+  {
+    "activityTags": [
+      
+    ],
+    "actors": "艺人：吴克群",
+    "business": 0,
+    "categoryid": 1,
+    "categoryname": "演唱会",
+    "cityid": 893,
+    "cityname": "广州",
+    "couponTags": [
+      
+    ],
+    "description": "艺人：吴克群",
+    "id": "1_1_634874631177",
+    "imgurl": "2053779015",
+    "isAtmospheric": false,
+    "iseticket": 0,
+    "isgeneralagent": 1,
+    "issuperticket": 0,
+    "isxuanzuo": 0,
+    "name": "吴克群2021 Livehouse巡回演唱会《今晚我想和你借点故事》",
+    "nameNoHtml": "吴克群2021 Livehouse巡回演唱会《今晚我想和你借点故事》",
+    "price": 360.0,
+    "price_str": "360",
+    "pricehigh": 360.0,
+    "privilegeTags": [
+      
+    ],
+    "projectid": 634874631177,
+    "promotionTags": [
+      
+    ],
+    "showstatus": "售票中",
+    "showtag": "",
+    "showtime": "2021.01.14 周四 20:00",
+    "sitestatus": 3,
+    "subcategoryid": 48,
+    "subcategoryname": "livehouse",
+    "subhead": "",
+    "venue": "太空间livehouse",
+    "venuecity": "广州",
+    "venueid": 2728007,
+    "verticalPic": "https://img.alicdn.com/bao/uploaded/i4/2251059038/O1CN01cir80Y2GdSI5h7EZs_!!2-item_pic.png"
+  },
+  {
+    "activityTags": [
+      
+    ],
+    "actors": "",
+    "business": 0,
+    "categoryid": 3,
+    "categoryname": "话剧歌剧",
+    "cityid": 1038,
+    "cityname": "南京",
+    "couponTags": [
+      
+    ],
+    "description": "",
+    "id": "1_1_635102702451",
+    "imgurl": "2056059728",
+    "isAtmospheric": false,
+    "iseticket": 0,
+    "isgeneralagent": 0,
+    "issuperticket": 0,
+    "isxuanzuo": 1,
+    "name": "2021南京音乐剧演出季·音乐剧《献给阿尔吉侬的花束》",
+    "nameNoHtml": "2021南京音乐剧演出季·音乐剧《献给阿尔吉侬的花束》",
+    "price": 180.0,
+    "price_str": "180-780",
+    "pricehigh": 780.0,
+    "privilegeTags": [
+      
+    ],
+    "projectid": 635102702451,
+    "promotionTags": [
+      
+    ],
+    "showstatus": "售票中",
+    "showtag": "",
+    "showtime": "2021.03.19-03.20",
+    "sitestatus": 3,
+    "subcategoryid": 22,
+    "subcategoryname": "音乐剧",
+    "subhead": "",
+    "venue": "南京保利大剧院大剧场",
+    "venuecity": "南京",
+    "venueid": 59075,
+    "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i4/2251059038/O1CN01sSyBP22GdSHzdaOHr_!!2251059038.jpg"
+  },
+  {
+    "activityTags": [
+      
+    ],
+    "actors": "艺人：郝云、房东的猫",
+    "business": 0,
+    "categoryid": 1,
+    "categoryname": "演唱会",
+    "cityid": 1185,
+    "cityname": "海口",
+    "couponTags": [
+      
+    ],
+    "description": "艺人：郝云、房东的猫",
+    "id": "1_1_634155193063",
+    "imgurl": "2046584634",
+    "isAtmospheric": false,
+    "iseticket": 0,
+    "isgeneralagent": 1,
+    "issuperticket": 0,
+    "isxuanzuo": 0,
+    "name": "【早鸟特惠】2021公路音乐节（海口站）",
+    "nameNoHtml": "【早鸟特惠】2021公路音乐节（海口站）",
+    "price": 240.0,
+    "price_str": "240-860",
+    "pricehigh": 860.0,
+    "privilegeTags": [
+      
+    ],
+    "projectid": 634155193063,
+    "promotionTags": [
+      
+    ],
+    "showstatus": "售票中",
+    "showtag": "",
+    "showtime": "2021.01.23-01.24",
+    "sitestatus": 3,
+    "subcategoryid": 12,
+    "subcategoryname": "音乐节",
+    "subhead": "",
+    "venue": "长影环球100奇幻乐园",
+    "venuecity": "海口",
+    "venueid": 1274018,
+    "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i1/2251059038/O1CN01E2nVPd2GdSHy4lJ2j_!!2251059038.jpg"
+  }
+]}

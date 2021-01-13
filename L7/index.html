@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .tabs-wrap{
+      width: 500px;
+      margin: 0 auto;
+      border: 1px solid orangered;
+    }
+    .tabs li.active{
+      border-bottom-color: orangered;
+      color: orangered;
+    }
+    .tabs li{
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+    }
+    .tabs{
+      margin: 0;
+      padding: 0;
+      display: flex;
+      border-bottom: 1px solid orangered;
+    }
+    .tabs-content{
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <tabs>
+      <tab-item label="火车"><h1>火车火车火车1</h1></tab-item>
+      <tab-item label="飞机"><h1>飞机飞机飞机2</h1></tab-item>
+      <tab-item label="汽车"><h1>汽车汽车汽车3</h1></tab-item>
+    </tabs>
+  </div>
+
+  <script src='https://cdn.bootcss.com/vue/2.6.10/vue.js'></script>
+  <script>
+    
+    Vue.component('tabs', {
+      template: `<div class="tabs-wrap">
+          <ol class="tabs">
+            <li :class="{active: currentIndex === i}" v-for="(item,i) in titleList" @click="currentIndex = i">{{item}}</li>
+          </ol>
+          <div class="tabs-content"><slot></slot></div>
+        </div>`,
+      mounted() {
+        this.$children[this.currentIndex].isShow = true
+        this.titleList = this.$children.map(r => r.label)
+      },
+      watch: {
+        currentIndex(v) {
+          this.$children.forEach((r, i) => {
+            r.isShow = v === i
+          })
+        }
+      },
+      data() {
+        return {
+          titleList: [],
+          currentIndex: 0
+        }
+      }
+    })
+
+    Vue.component('tabItem', {
+      template: `<div v-show="isShow">
+        <slot></slot>
+      </div>`,
+      props: {
+        label: {
+          type: String,
+          required: true
+        }
+      },
+      data(){
+        return {
+          isShow: false
+        }
+      }
+    })
+    
+    new Vue({
+      el: "#app",
+    })
+  </script>
+</body>
+</html>

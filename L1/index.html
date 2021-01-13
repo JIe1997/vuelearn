@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <template v-html="msgg"></template>
+
+    <div v-html="span"></div>
+
+    <h4 v-once>{{once1}}</h4>
+    {{msg}}
+
+    <p>-----------------------------</p>
+    <div>
+      <label for="">数学</label>
+      <input type="text" v-model="mathScore">
+    </div>
+    <div>
+      <label for="">英语</label>
+      <input type="text" v-model="englishScore">
+    </div>
+    <div>
+      <label for="">总数</label>
+      <input type="text" v-model="score()">
+    </div>
+    <div>
+      <label for="">总数1</label>
+      <input type="text" v-model="score1">
+    </div>
+    <input type="text" v-model="score2">
+
+    <fieldset>
+      <legend>添加</legend>
+      <div>
+        名字：<input type="text" v-model="name"><br>
+        图片：<input type="text" v-model="img"><br>
+        <button @click="add">添加</button>
+      </div>
+    </fieldset>
+
+    <ul>
+      <li v-for="(item, i) in arr">
+        <img :src="item.img" :alt="item.name" :style="imgStyle">
+        <a :href="''+item.img" target="_blank">{{item.name}}</a>
+        <button @click="del(i)">删除</button>
+      </li>
+    </ul>
+  </div>
+  <script src='https://cdn.bootcss.com/vue/2.6.10/vue.js'></script>
+  <script>
+    Vue.config.devtools = false
+    Vue.config.productionTip = false
+    const vm = new Vue({
+      // el: "#app",
+      template: '<div id="app"><div v-once="once1"></div>123</div>',
+      data(){
+        return {
+          name: '',
+          img: '',
+          once1: "一次性插值<span>1</span>",
+          msg: "慢慢摸摸",
+          span: "<span style='color:red'><b>红色</b></span>",
+          mathScore: 0,
+          englishScore: 0,
+          msgg: '<span>1</span>',
+          imgStyle: {
+            width: '300px',
+            height: '400px'
+          },
+          arr: [
+            {
+              name: "ace1",
+              img: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2294243928,909333689&fm=26&gp=0.jpg"
+            },
+            {
+              name: "ace2",
+              img: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2511045700,2301129437&fm=26&gp=0.jpg"
+            },
+            {
+              name: "ace3",
+              img: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1183251861,1243269006&fm=26&gp=0.jpg"
+            }
+          ]
+        }
+      },
+      methods: {
+        score() {
+          console.log("调用method")
+          return (this.mathScore-0) + (this.englishScore-0)
+        },
+        del(i) {
+          this.arr.splice(i,1)
+        },
+        add() {
+          this.arr.unshift({
+            name: this.name,
+            img: this.img
+          })
+          this.name = ''
+          this.img = ''
+        }
+      },
+      computed: {
+        score1: function() {
+          console.log("调用computed-score1")
+          return (this.mathScore-0) + (this.englishScore-0)
+        },
+        score2: {
+          get: function() {
+            console.log("调用computed-score2")
+            return (this.mathScore-0) + (this.englishScore-0)
+          },
+          set: function(newValue) {
+            var avgScore = newValue / 2
+            this.mathScore = avgScore
+            this.englishScore = avgScore
+          }
+        }
+      },
+      watch: {
+        
+      }
+    }).$mount('#app')
+  </script>
+</body>
+</html>
