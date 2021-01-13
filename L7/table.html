@@ -4,14 +4,85 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    *{padding: 0;margin: 0;}
+    li{list-style:none;}
+  </style>
 </head>
 <body>
   <div id="app">
-
+    <sr-table :list="userList">
+      <sr-col field="id" label="日期"></sr-col>
+      <sr-col field="name" label="姓名"></sr-col>
+      <sr-col field="age" label="年龄"></sr-col>
+      <sr-col field="email" label="邮箱"></sr-col>
+    </sr-table>
   </div>
   <script src='https://cdn.bootcss.com/vue/2.6.10/vue.js'></script>
   <script>
-    
+    Vue.component('sr-table', {
+      template: `<table>
+          <tr><slot></slot></tr>
+          <tr v-for="item in list">
+            <td v-for="f in fieldList">
+              {{item[f]}}
+            </td> 
+          </tr>
+        </table>`,
+      props: {
+        list: {
+          type: Array,
+          required: true
+        }
+      },
+      data() {
+        return {
+          fieldList: []
+        }
+      }
+    })
+
+    Vue.component('sr-col', {
+      template: `<th>{{label}}</th>`,
+      props: ['field', 'label'],
+      created() {
+        this.$parent.fieldList.push(this.field)
+      }
+    })
+
+    new Vue({
+      el: "#app",
+      data(){
+        return {
+          userList: [
+            {
+              id: 1,
+              name: "JI",
+              age: 28,
+              email: "xxx@qq.com"
+            },
+            {
+              id: 2,
+              name: "JI2",
+              age: 22,
+              email: "JI2xxx@qq.com"
+            },
+            {
+              id: 3,
+              name: "JI3",
+              age: 33,
+              email: "JI3xxx@qq.com"
+            },
+            {
+              id: 4,
+              name: "JI4",
+              age: 42,
+              email: "JI5xxx@qq.com"
+            }
+          ],
+        }
+      }
+    })
   </script>
 </body>
 </html>
