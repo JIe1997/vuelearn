@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <sr-table :field="fieldList" :data="list"></sr-table>
+  </div>
+
+  <script src='https://cdn.bootcss.com/vue/2.6.12/vue.js'></script>
+  <script>
+    Vue.component('srTable', {
+      template: `<table>
+        <tr><th v-for="f in field">{{f.label}}</th></tr>
+        <tr v-for="row in data">
+          <td v-for="col in field">
+            {{row[col.field]}}  
+          </td>
+        </tr>
+      </table>`,
+      props: {
+        field: {
+          type: Array,
+          required: true
+        },
+        data: {
+          type: Array,
+          required: true
+        }
+      },
+      
+    })
+
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          fieldList: [{
+              field: 'name',
+              label: '姓名'
+            },
+            {
+              field: 'id',
+              label: '编号'
+            },
+            {
+              field: 'age',
+              label: '年龄'
+            },
+            {
+              field: 'hobby',
+              label: '喜好'
+            }
+          ],
+          list: [{
+              id: 1,
+              name: 'JI1',
+              age: 24,
+              hobby: '打篮球'
+            },
+            {
+              id: 2,
+              name: 'JI2',
+              age: 21,
+              hobby: '打羽毛球'
+            },
+            {
+              id: 3,
+              name: 'JI3',
+              age: 18,
+              hobby: '跳舞'
+            },
+            {
+              id: 4,
+              name: 'JI4',
+              age: 25,
+              hobby: '音乐'
+            }
+          ]
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -7,11 +7,32 @@
   <style>
     *{padding: 0;margin: 0;}
     li{list-style:none;}
+    tr,
+    th,
+    td,
+    table{
+      border: 1px solid #eee;
+    }
+    table{
+      margin: 40px auto;
+      width: 500px;
+      border-collapse:collapse;
+    }
+    table th,
+    table td{
+      padding: 20px 10px;
+    }
+    table.center{
+      text-align: center;
+    }
+    table.hoverbg tr:hover{
+      background-color:#fcfcfc;
+    }
   </style>
 </head>
 <body>
   <div id="app">
-    <sr-table :list="userList">
+    <sr-table :list="userList" hoverbg center>
       <sr-col field="id" label="日期"></sr-col>
       <sr-col field="name" label="姓名"></sr-col>
       <sr-col field="age" label="年龄"></sr-col>
@@ -21,7 +42,7 @@
   <script src='https://cdn.bootcss.com/vue/2.6.10/vue.js'></script>
   <script>
     Vue.component('sr-table', {
-      template: `<table>
+      template: `<table :class="{hoverbg:hoverbg,center:center}">
           <tr><slot></slot></tr>
           <tr v-for="item in list">
             <td v-for="f in fieldList">
@@ -33,6 +54,12 @@
         list: {
           type: Array,
           required: true
+        },
+        hoverbg: {
+          type: Boolean
+        },
+        center: {
+          type: Boolean
         }
       },
       data() {
