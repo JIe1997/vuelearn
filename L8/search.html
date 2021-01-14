@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_2291973_zg5eu9vd4g.css">
+  <style>
+    .sx-search{
+      margin: 10px 0;
+      width: 200px;
+      border: 1px solid #666;
+      display: flex;
+      align-items: center;
+      color:#666;
+      border-radius: 35px;
+      overflow: hidden;
+    }
+    .sx-search:hover{
+      border-color: #333;
+    }
+    .sx-search input{
+      padding: 10px 0 10px 14px;
+      border: 0;
+      outline: none;
+      flex: 1;
+      width: 80%;
+    }
+    .sx-search i:hover{
+      color:#000;
+    }
+    .sx-search i{
+      padding-right: 8px;
+      cursor: pointer;
+      font-size: 20px;
+      transition: color .23s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <sx-search placeholder="关键字" @search="search"></sx-search>
+  </div>
+  <script src='https://cdn.bootcss.com/vue/2.6.10/vue.js'></script>
+  <script>
+    Vue.component('sx-search', {
+      template: `
+        <div class="sx-search">
+          <input v-model="searchText" @keydown.enter="search" type="text" :placeholder="placeholder" />
+          <i class="iconfont icon-search" @click="search"></i>
+        </div>
+      `,
+      props: {
+        placeholder:{
+          type: String,
+        }
+      },
+      data() {
+        return {
+          searchText: ""
+        }
+      },
+      methods: {
+        search() {
+          this.$emit('search', this.searchText)
+          this.searchText = ''
+        }
+      }
+    })
+
+    new Vue({
+      el: "#app",
+      data(){
+        return {
+
+        }
+      },
+      methods: {
+        search(v) {
+          console.log(v)
+        }
+      },
+    })
+  </script>
+</body>
+</html>
