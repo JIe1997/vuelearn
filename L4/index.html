@@ -10,6 +10,12 @@
       padding: 0;
       list-style: none;
     }
+    .mt20{
+      margin-top: 20px;
+    }
+    .pt20{
+      padding-top: 20px;
+    }
     .container{
       width: 1200px;
       margin: 0 auto;
@@ -47,6 +53,11 @@
       height: 50px;
       text-align: center;
     }
+    button{
+      font-size: 18px;
+      padding: 2px 12px;
+      cursor: pointer;
+    }
     .bt0{
       border-top: 0;
     }
@@ -57,7 +68,8 @@
 </head>
 <body>
   <div id="app" v-cloak>
-    <h2 class="container">购物车</h2>
+    <h2 class="container pt20">购物车</h2>
+    <div style="height:20px"></div>
     <ol class="list">
       <li><input type="checkbox" id="checkAll" v-model="isCheckAll" @change="checkAll"><label for="checkAll">全选</label></li>
       <li>名称</li>
@@ -66,7 +78,6 @@
       <li>金额</li>
       <li>操作</li>
     </ol>
-
     <ol class="list bt0" v-for="(goods,i) in goodsList">
       <li><input type="checkbox" :id="'c'+i" v-model="goods.isCheck" @change="check"><label :for="'c'+i">选中</label></li>
       <li>
@@ -76,21 +87,54 @@
       </li>
       <li>{{goods.price | toFixed(2) | RMBformat}}</li>
       <li>
-        <div class="count">
-          <button @click="goods.count--" :disabled="goods.count===countLimit.MIN">-</button>
-          <input type="text" :value="goods.count" @blur="changeCount($event,goods)" @keydown.enter="changeCount($event,goods)">
-          <button @click="goods.count++" :disabled="goods.count===countLimit.MAX">+</button>
-        </div>
+        <counter v-model="goods.count" :max="5" />
       </li>
       <li>{{calc(goods) | toFixed(2) | RMBformat}}</li>
       <li><button @click="del(i)">&times;</button></li>
     </ol>
-    <div class="container">
-      总价：{{priceAll}}
+    <div class="container pt20">
+      总价：{{priceAll | toFixed(2) | RMBformat }}
     </div>
   </div>
   <script src='https://cdn.bootcss.com/vue/2.6.10/vue.js'></script>
   <script>
+    Vue.component('counter', {
+      template: `
+        <div class="count">
+          <button @click="count--" :disabled="count===min">-</button>
+          <input type="text" v-model="count">
+          <button @click="count++" :disabled="count===max">+</button>
+        </div>
+      `,
+      props: {
+        value: {
+          type: Number,
+          default: 0,
+        },
+        min: {
+          type: Number,
+          default: 0,
+        },
+        max: {
+          type: Number,
+          default: 99,
+        }
+      },
+      watch: {
+        count(val) {
+          if(isNaN(val)) this.count = 1
+          if(!Number.isInteger(val)) this.count = Math.floor(val)
+          if(val < this.min || val > this.max) this.count = this.min
+          this.$emit('input', this.count)
+        }
+      },
+      data() {
+        return {
+          count: this.value
+        }
+      },
+    })
+
     var vm = new Vue({
       el: "#app",
       filters: {
@@ -103,10 +147,6 @@
       },
       data() {
         return {
-          countLimit: {
-            MIN: 1,
-            MAX: 99
-          },
           isCheckAll: true,
           goodsList: [
             {
@@ -143,25 +183,24 @@
         }
       },
       methods: {
+        // 计算每一条数据的价格
         calc(goods) {
           return goods.count * Number(goods.price)
         },
-        changeCount(e, goods) {
-          let val = e.target.value
-          if(isNaN(val)) val = 1
-          if(Number.isInteger(val)) val = Math.floor(val)
-          if(val < this.countLimit.MIN || val > this.countLimit.MAX) val = this.countLimit.MIN
-          goods.count = val
-          // 设置dom input的value
-          e.target.value = val
+        // 增加数量
+        changeCount(val) {
+          console.log(val)
         },
+        // 删除某一条
         del(i){
           if(window.confirm('确定要删除？'))
             this.goodsList.splice(i, 1)
         },
+        // 一键全选
         checkAll() {
           this.goodsList.forEach(r => r.isCheck = this.isCheckAll) 
         },
+        // 检测有没有全选
         check() {
           this.isCheckAll = this.goodsList.every(r => !!r.isCheck)
         }

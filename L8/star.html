@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+  <meta name="viewport"
+    content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="//at.alicdn.com/t/font_2291973_zg5eu9vd4g.css">
 </head>
+
 <body>
   <style>
-    .star{cursor: pointer;}
+    .star {
+      cursor: pointer;
+    }
   </style>
   <div id="app">
     <div>物流评分</div>
@@ -27,7 +32,7 @@
           v-for="item in count"
           @mouseenter="myScore = item"
           @mouseleave="myScore = myTempScore"
-          @click="myTempScore = item"
+          @click.once="myTempScore = item"
         ></i>
       </div>
       `,
@@ -58,7 +63,8 @@
         }
       },
       methods: {
-        c(item){
+        
+        c(item) {
           return item <= this.myScore ? this.currentColor : this.color
         }
       },
@@ -83,11 +89,12 @@
         }
       },
       methods: {
-        changeStar(i){
+        changeStar(i) {
           console.log(i)
         }
       },
     })
   </script>
 </body>
+
 </html>
