@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../Lib/css/css.css">
+  <style>
+    .left{
+      width: 200px;
+      position: fixed;
+      top: 0;
+      min-height: 100vh;
+    }
+    .right{
+      box-sizing: border-box;
+      padding: 20px;
+      width: calc(100% - 200px);
+      min-height: 100vh;
+      margin-left: 200px;
+      background-color: palevioletred;
+    }
+    .p>li{
+      width: 100%;
+      background-color: #fff;
+      border-bottom: 1px solid #eee;
+    }
+    .p>li.on>a{
+      background-color: #b597e8;
+      color: #fff;
+    }
+    .p>li.on .c{
+      display: block;
+    }
+    a{
+      display: block;
+      padding-left: 20px;
+      box-sizing: border-box;
+      line-height: 40px;
+      height: 40px;
+    }
+    .c{
+      display: none;
+      width: 100%;
+      background-color: #eee;
+    }
+    .c>li.on>a{
+      background-color: #3ca397;
+      color: #fff;
+    }
+    .c>li>a{
+      padding-left: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="flex">
+    <div class="left">
+      <ol class="p">
+        <li :class="{'on': pIndex===item.id}" v-for="item in p" :key="item.id" >
+          <a @click.stop="pClick(item.id)" href="javascript:;">{{item.name}}</a>
+          <ul class="c">
+            <li v-for="cItem in item.c" :key="cItem.id" :class="{'on': pIndex === item.id && cIndex===cItem.id}"><a href="javascript:;" @click.stop="cClick(cItem.id)" >{{cItem.name}}</a></li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+    <div class="right">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore natus dicta adipisci dolores illum delectus molestias, sapiente et impedit ex maiores voluptas nemo, eos commodi alias at harum repudiandae consequatur?
+    </div>
+  </div>
+  <script src='https://cdn.bootcss.com/vue/2.6.10/vue.js'></script>
+  <script>
+    new Vue({
+      el: "#app",
+      methods: {
+        pClick(id) {
+          if(this.pIndex === id){
+            this.pIndex = 0
+          }else{
+            this.cIndex = 0
+            this.pIndex = id
+          }
+        },
+        cClick(id){
+          if(this.cIndex === id){
+            this.cIndex = 0
+          }else{
+            this.cIndex = id
+          }
+        }
+      },
+      data() {
+        return {
+          pIndex: 0,
+          cIndex: 0,
+          p: [
+            {
+              id: 1,
+              name: "管理",
+              c: [
+                {
+                  id: 1,
+                  name: "接口"
+                },
+                {
+                  id: 2,
+                  name: "产品"
+                },
+                {
+                  id: 3,
+                  name: "事件"
+                },
+                {
+                  id: 4,
+                  name: "目录"
+                }
+              ]
+            },
+            {
+              id: 2,
+              name: "管理1",
+              c: [
+                {
+                  id: 1,
+                  name: "接口1"
+                },
+                {
+                  id: 2,
+                  name: "产品1"
+                },
+                {
+                  id: 3,
+                  name: "事件1"
+                },
+                {
+                  id: 4,
+                  name: "目录1"
+                }
+              ]
+            }
+          ]
+        }
+      },
+    })
+  </script>
+</body>
+</html>

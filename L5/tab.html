@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../Lib/css/css.css">
+  <style>
+    .tab-wrap{
+      position: relative;
+      width: 600px;
+      margin: 100px auto;
+      text-align: center;
+    }
+    .tab-title li.on{
+      background-color: yellow;
+    }
+    .tab-title li{
+      padding: 20px;
+      background-color: #eee;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+    .tab-title{
+      border: 1px solid #333;
+    }
+    .tab-content div{
+      box-sizing: border-box;
+      position: absolute;
+      width: 100%;
+      height: 500px;
+      border: 1px solid #eee;
+      background-color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="tab-wrap">
+      <ol class="tab-title flex">
+        <li @click="tabIndex=i" v-for="(item, i) in list" :key="i" :class="['flex-1',{'on':tabIndex===i}]">{{item.name}}</li>
+      </ol>
+      <div class="tab-content">
+        <div v-for="(item, i) in list" :key="i" class="flex a-c j-c" v-show="tabIndex===i">{{item.content}}</div>
+      </div>
+    </div>
+  </div>
+  <script src='https://cdn.bootcss.com/vue/2.6.10/vue.js'></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          tabIndex: 0,
+          list: [
+            {
+              name: '豆腐',
+              content: "豆腐西施"
+            },
+            {
+              name: '蘑菇',
+              content: "马里奥"
+            },
+            {
+              name: '榛子',
+              content: "冰河世纪"
+            }
+          ]
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>
