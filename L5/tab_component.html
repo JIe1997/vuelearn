@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../Lib/css/css.css">
+  <style>
+    .tab-wrap{
+      position: relative;
+      width: 600px;
+      margin: 100px auto;
+      text-align: center;
+    }
+    .tab-title li.on{
+      background-color: yellow;
+    }
+    .tab-title li{
+      padding: 20px;
+      background-color: #eee;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+    .tab-title{
+      border: 1px solid #333;
+    }
+    .tab-content div{
+      box-sizing: border-box;
+      position: absolute;
+      width: 100%;
+      height: 500px;
+      border: 1px solid #eee;
+      background-color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    
+      <tabs>
+        <tab-item :label="item.name" v-for="(item,i) in list" :key="i" :current="i === 0">
+          <div class="flex a-c j-c">{{item.content}}</div>
+        </tab-item>
+      </tabs>
+    
+  </div>
+  <script src='https://cdn.bootcss.com/vue/2.6.10/vue.js'></script>
+  <script>
+    Vue.component('tabs', {
+      template: `<div class="tab-wrap">
+        <ol class="tab-title flex">
+          <li @click="tabIndex=i" v-for="(item, i) in titleList" :key="i" :class="['flex-1',{'on':tabIndex===i}]">{{item}}</li>
+        </ol>
+        <div class="tab-content">
+          <slot></slot>
+        </div>
+      </div>`,
+      mounted() {
+
+        for(let i = 0; i < this.$children.length; i++){
+          let r = this.$children[i]
+          if(r.current){
+            r.isShow= r.current
+            this.tabIndex = i
+            break
+          }
+        }
+        this.titleList = this.$children.map(r => r.label)
+      },
+      watch: {
+        tabIndex(v) {
+          this.$children.forEach((r, i) => {
+            r.isShow = v===i
+          })
+        }
+      },
+      data() {
+        return {
+          titleList: [],
+          tabIndex: 0,
+        }
+      },
+    })
+    Vue.component('tabItem', {
+      template: `
+        <div v-show="isShow">
+          <slot></slot>
+        </div>
+      `,
+      props: {
+        label: {
+          type: String,
+          required: true
+        },
+        current: {
+          type: Boolean,
+        }
+      },
+      data() {
+        return {
+          isShow: false
+        }
+      }
+    })
+
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          tabIndex: 0,
+          list: [
+            {
+              name: '豆腐',
+              content: "豆腐西施"
+            },
+            {
+              name: '蘑菇',
+              content: "马里奥"
+            },
+            {
+              name: '榛子',
+              content: "冰河世纪"
+            }
+          ]
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>
