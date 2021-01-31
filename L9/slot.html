@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../Lib/css/css.css">
+</head>
+<body>
+  <div id="app">
+    <zzz>
+      <template>
+        aaaa
+      </template>
+      <template v-slot:header>
+        具名方式1
+      </template>
+      <template #uming2>
+        具名方式2
+      </template>
+    </zzz>
+  </div>
+  <script src='https://cdn.bootcss.com/vue/2.6.12/vue.js'></script>
+  <script>
+    Vue.component('zzz', {
+      template: `<div>
+        <slot></slot>
+        <slot name="juming1"></slot>
+        <slot name="juming2"></slot>
+        <slot name="beiyong">备用</slot>
+      </div>`
+    })
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          
+        }
+      },
+    })
+  </script>
+</body>
+</html>

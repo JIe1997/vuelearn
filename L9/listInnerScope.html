@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../Lib/css/css.css">
+</head>
+<body>
+  <div id="app">
+    <aaa :list="list">
+      <template #right="{id}">
+        <button @click="del(id)">x</button>
+      </template>
+    </aaa>
+  </div>
+  <script src='https://cdn.bootcss.com/vue/2.6.10/vue.js'></script>
+  <script>
+    Vue.component('aaa', {
+      template: `
+        <ul>
+          <li v-for="item in list" :key="item.id">
+            <span>{{item.name}}</span>
+            <span>{{item.age}}</span>
+            <span>{{item.hobby}}</span>
+            <slot name="right" :id="item.id"></slot>
+          </li>
+        </ul>
+      `,
+      props: {
+        list: {
+          type: Array,
+          default: []
+        },
+      },
+    })
+    new Vue({
+      el: "#app",
+      methods: {
+        del(id) {
+          let index = this.list.findIndex(r=> r.id === id)
+          this.list.splice(index,1)
+        }
+      },
+      data() {
+        return {
+          list: [
+            {
+              id: 0,
+              name: '张三',
+              age: 22,
+              hobby: '球'
+            },
+            {
+              id: 1,
+              name: '李四',
+              age: 23,
+              hobby: '球'
+            }
+          ]
+        }
+      },
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../Lib/css/css.css">
+</head>
+<body>
+  <div id="app">
+    <h1>全局混入</h1>
+    <ul>
+      <li v-for="item in list">{{item.cityname}}</li>
+    </ul>
+    <hr>
+    <h1>局部混入</h1>
+    <h2>{{nikeName}}</h2>
+    <zs></zs>
+  </div>
+  <script src='https://cdn.bootcss.com/vue/2.6.10/vue.js'></script>
+  <script>
+    Vue.mixin({
+      data() {
+        return{
+          BaseUrl: 'http://localhost:5502/L9'
+        }
+      },
+      methods: {
+        $get(url) {
+          return fetch(this.BaseUrl+url).then(res=> {
+            return res.json()
+          })
+        }
+      },
+    })
+    let mixin = {
+      data() {
+        return {
+          nikeName: '张三',
+        }
+      }
+    }
+    Vue.component('zs', {
+      template: "<div>组件内的nikename{{nikeName}}</div>",
+      mixins: [mixin],
+    })
+    new Vue({
+      el: "#app",
+      mixins: [mixin],
+      created () {
+        this.$get('/data.json').then(res => {
+          this.list = res.resultData
+        })
+      },
+      data() {
+        return {
+          list: []
+        }
+      },
+
+    })
+  </script>
+</body>
+</html>

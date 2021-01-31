@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../Lib/css/css.css">
+  <style>
+    .count{
+      display: inline-flex;
+      border: 1px solid #ccc;
+    }
+    .count button[disabled]{
+      cursor: not-allowed;
+    }
+    .count button{
+      width: 40px;
+      font-size: 18px;
+      border: 0;
+      outline: none;
+      cursor: pointer;
+    }
+    .count input{
+      outline: none;
+      border: 0;
+      width: 60px;
+      height: 50px;
+      text-align: center;
+    }
+    button{
+      font-size: 18px;
+      padding: 2px 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div>{{num}}</div>
+    <counter v-model="num" :min="1" :max="10" />
+  </div>
+  <script src='https://cdn.bootcss.com/vue/2.6.10/vue.js'></script>
+  <script>
+    Vue.component('counter', {
+      template: `
+        <div class="count">
+          <button @click="count--" :disabled="count===min">-</button>
+          <input type="text" v-model="count">
+          <button @click="count++" :disabled="count===max">+</button>
+        </div>
+      `,
+      props: {
+        value: {
+          type: Number,
+          default: 0,
+        },
+        min: {
+          type: Number,
+          default: 0,
+        },
+        max: {
+          type: Number,
+          default: 99,
+        }
+      },
+      watch: {
+        count(val) {
+          if(isNaN(val)) this.count = 1
+          if(!Number.isInteger(val)) this.count = Math.floor(val)
+          if(val < this.min || val > this.max) this.count = this.min
+          this.$emit('input', this.count)
+        }
+      },
+      data() {
+        return {
+          count: this.value
+        }
+      },
+    })
+
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          num: 1
+        }
+      },
+    })
+  </script>
+</body>
+</html>

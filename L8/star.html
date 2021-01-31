@@ -16,6 +16,7 @@
     }
   </style>
   <div id="app">
+    <div @click="a = $event.target.innerText+'1'" >{{a}}</div>
     <div>物流评分</div>
     <star :count="5" current-color="red" size="2rem" @change="changeStar"></star>
     <div>客服评分</div>
@@ -32,7 +33,7 @@
           v-for="item in count"
           @mouseenter="myScore = item"
           @mouseleave="myScore = myTempScore"
-          @click.once="myTempScore = item"
+          @click="myTempScore = item"
         ></i>
       </div>
       `,
@@ -70,7 +71,7 @@
       },
       watch: {
         myTempScore(val) {
-          this.$emit('change', val)
+          this.$emit('change', val, 'b')
         }
       },
       data() {
@@ -85,12 +86,13 @@
       el: "#app",
       data() {
         return {
+          a: '12354',
           startCount: 0
         }
       },
       methods: {
-        changeStar(i) {
-          console.log(i)
+        changeStar(i,val) {
+          console.log(i, val)
         }
       },
     })
