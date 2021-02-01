@@ -9,13 +9,13 @@
 <body>
   <div id="app">
     <zzz>
-      <template>
-        aaaa
+      <template v-slot:default="{num}">
+        aaaa+ {{num}}
       </template>
-      <template v-slot:header>
+      <template v-slot:juming1>
         具名方式1
       </template>
-      <template #uming2>
+      <template #juming2>
         具名方式2
       </template>
     </zzz>
@@ -24,9 +24,9 @@
   <script>
     Vue.component('zzz', {
       template: `<div>
-        <slot></slot>
-        <slot name="juming1"></slot>
-        <slot name="juming2"></slot>
+        <slot :num="3"></slot><br>
+        <slot name="juming1"></slot><br>
+        <slot name="juming2"></slot><br>
         <slot name="beiyong">备用</slot>
       </div>`
     })
