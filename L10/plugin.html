@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../Lib/css/css.css">
+</head>
+
+<body>
+  <div id="app">
+    <my-link to="http://baidu.com">百度</my-link>
+  </div>
+  <script src='https://cdn.bootcss.com/vue/2.6.10/vue.js'></script>
+  <script>
+    let plugins = {
+      install(Vue, options) {
+        Vue.component('my-link', {
+          template: `<a :href="to"><slot></slot></a>`,
+          props: {
+            to: {
+              type: String,
+              default: '#'
+            },
+          },
+        })
+
+        Vue.mixin({
+          methods: {
+            pageTo(url) {
+              window.location.href = url
+            }
+          },
+        })
+      }
+    }
+
+    Vue.use(plugins)
+
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>
