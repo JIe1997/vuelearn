@@ -1,0 +1,29 @@
+body{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  color: #333;
+  outline: none;
+}
+.flex{
+  display: flex;
+}
+.f-w{
+  flex-wrap: wrap;
+}
+.flex-col{
+  flex-direction: column;
+}
+.j-c{
+  justify-content: center;
+}
+.j-b{
+  justify-content: space-between;
+}
+.a-c{
+  align-items: center;
+}
+.flex-1{
+  flex: 1;
+}

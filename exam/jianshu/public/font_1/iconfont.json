@@ -1,0 +1,72 @@
+{
+  "id": "1851990",
+  "name": "vueTest",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "18092943",
+      "name": "write",
+      "font_class": "write",
+      "unicode": "e6bf",
+      "unicode_decimal": 59071
+    },
+    {
+      "icon_id": "18462264",
+      "name": "字母",
+      "font_class": "zimu",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "829462",
+      "name": "报告",
+      "font_class": "baogao",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "2193704",
+      "name": "图例位置-右下",
+      "font_class": "youxia",
+      "unicode": "e6d0",
+      "unicode_decimal": 59088
+    },
+    {
+      "icon_id": "11345588",
+      "name": "信息",
+      "font_class": "xinxi",
+      "unicode": "e6fb",
+      "unicode_decimal": 59131
+    },
+    {
+      "icon_id": "11714147",
+      "name": "网络",
+      "font_class": "wangluo",
+      "unicode": "e736",
+      "unicode_decimal": 59190
+    },
+    {
+      "icon_id": "12552330",
+      "name": "head-工具箱",
+      "font_class": "head-gongjuxiang",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "14421790",
+      "name": "退出",
+      "font_class": "tuichu_huaban1",
+      "unicode": "e686",
+      "unicode_decimal": 59014
+    },
+    {
+      "icon_id": "14591830",
+      "name": "school",
+      "font_class": "school",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    }
+  ]
+}
